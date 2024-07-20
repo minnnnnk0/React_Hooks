@@ -1,4 +1,5 @@
 import useClick from './hooks/useClick';
+import useConfirm from './hooks/useConfirm';
 import useInput from './hooks/useInput';
 import useTab from './hooks/useTab';
 import useTitle from './hooks/useTitle';
@@ -18,6 +19,11 @@ const App = () => {
   // useClick
   const sayHello = () => console.log('say Hello');
   const title = useClick(sayHello);
+
+  // useConfirm
+  const deleteWord = () => console.log('Deleting the word');
+  const abort = () => console.log('Aborted');
+  const confirmDelete = useConfirm('Are you sure?', deleteWord, abort);
 
   return (
     <>
@@ -42,6 +48,12 @@ const App = () => {
         {/* useClick */}
         <div>
           <h1 ref={title}>Hi</h1>
+        </div>
+
+        <hr />
+        {/* useConfrim */}
+        <div>
+          <button onClick={confirmDelete}>Delete the word</button>
         </div>
       </div>
     </>
