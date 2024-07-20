@@ -1,6 +1,7 @@
 import useBeforeLeave from './hooks/useBeforeLeave';
 import useClick from './hooks/useClick';
 import useConfirm from './hooks/useConfirm';
+import useFadeIn from './hooks/useFadeIn';
 import useInput from './hooks/useInput';
 import usePreventLeave from './hooks/usePreventLeave';
 import useTab from './hooks/useTab';
@@ -33,6 +34,10 @@ const App = () => {
   // useBeforeLeave
   const begForLife = () => console.log('Plz dont go');
   useBeforeLeave(begForLife);
+
+  // useFadeIn
+  const fadeInH1 = useFadeIn(1, 2);
+  const fadeInP = useFadeIn(5, 10);
 
   return (
     <>
@@ -70,6 +75,13 @@ const App = () => {
         <div>
           <button onClick={enablePrevent}>Protect</button>
           <button onClick={disablePrevent}>Unprotect</button>
+        </div>
+
+        <hr />
+        {/* useFadeIn */}
+        <div>
+          <h1 {...fadeInH1}>Fade-In Animation</h1>
+          <p {...fadeInP}>Customizing Fade-In</p>
         </div>
       </div>
     </>
