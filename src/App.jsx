@@ -1,3 +1,4 @@
+import useBeforeLeave from './hooks/useBeforeLeave';
 import useClick from './hooks/useClick';
 import useConfirm from './hooks/useConfirm';
 import useInput from './hooks/useInput';
@@ -28,6 +29,10 @@ const App = () => {
 
   // usePreventLeave
   const { enablePrevent, disablePrevent } = usePreventLeave();
+
+  // useBeforeLeave
+  const begForLife = () => console.log('Plz dont go');
+  useBeforeLeave(begForLife);
 
   return (
     <>
