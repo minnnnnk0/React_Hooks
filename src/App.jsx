@@ -3,6 +3,7 @@ import useClick from './hooks/useClick';
 import useConfirm from './hooks/useConfirm';
 import useFadeIn from './hooks/useFadeIn';
 import useInput from './hooks/useInput';
+import useNetwork from './hooks/useNetwork';
 import usePreventLeave from './hooks/usePreventLeave';
 import useTab from './hooks/useTab';
 import useTitle from './hooks/useTitle';
@@ -38,6 +39,9 @@ const App = () => {
   // useFadeIn
   const fadeInH1 = useFadeIn(1, 2);
   const fadeInP = useFadeIn(5, 10);
+
+  // useNetwork
+  const onLine = useNetwork();
 
   return (
     <>
@@ -82,6 +86,12 @@ const App = () => {
         <div>
           <h1 {...fadeInH1}>Fade-In Animation</h1>
           <p {...fadeInP}>Customizing Fade-In</p>
+        </div>
+
+        <hr />
+        {/* useNetwork */}
+        <div>
+          <h1>{onLine ? 'Online' : 'Offline'}</h1>
         </div>
       </div>
     </>
