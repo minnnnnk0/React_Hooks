@@ -1,5 +1,6 @@
 import useInput from './hooks/useInput';
 import useTab from './hooks/useTab';
+import useTitle from './hooks/useTitle';
 
 const App = () => {
   // useInput
@@ -9,6 +10,10 @@ const App = () => {
   // useTab
   const { currentItem, changeItem } = useTab(0, content);
 
+  // useTitle
+  const titleUpdate = useTitle('Loading...');
+  setTimeout(() => titleUpdate('Home'), 3000);
+
   return (
     <>
       <div>
@@ -16,9 +21,8 @@ const App = () => {
         <div>
           <input placeholder="입력해주세요" {...inputValue} />
         </div>
-        <div>
-          <hr />
-        </div>
+
+        <hr />
         {/* useTab */}
         <div>
           {content.map((section, index) => (
@@ -28,6 +32,10 @@ const App = () => {
           ))}
           <div>{currentItem.content}</div>
         </div>
+
+        <hr />
+        {/*  */}
+        <div></div>
       </div>
     </>
   );
