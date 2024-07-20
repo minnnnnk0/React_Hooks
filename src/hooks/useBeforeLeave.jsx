@@ -5,7 +5,11 @@ const useBeforeLeave = (onBefore) => {
     return;
   }
   const handle = () => {
-    onBefore();
+    // 마우스가 위로 벗어날 때만 조건 추가
+    const { clientY } = event;
+    if (clientY <= 0) {
+      onBefore();
+    }
   };
   useEffect(() => {
     document.addEventListener('mouseleave', handle);
