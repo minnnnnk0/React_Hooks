@@ -8,6 +8,7 @@ import usePreventLeave from './hooks/usePreventLeave';
 import useScroll from './hooks/useScroll';
 import useTab from './hooks/useTab';
 import useTitle from './hooks/useTitle';
+import useFullscreen from './useFullscreen';
 
 const App = () => {
   // useInput
@@ -49,6 +50,9 @@ const App = () => {
 
   // useScroll
   const { y } = useScroll();
+
+  // useFullscreen
+  const { element, triggerFull } = useFullscreen();
 
   return (
     <>
@@ -107,6 +111,18 @@ const App = () => {
           <h1 style={{ position: 'fixed', color: y > 100 ? 'red' : 'blue' }}>
             Scroll TEST
           </h1>
+        </div>
+
+        <hr />
+        {/* useFullscreen */}
+        <div>
+          <img
+            ref={element}
+            src="https://i.ibb.co/R6RwNxx/grape.jpg"
+            alt="grape"
+            width="250"
+          />
+          <button onClick={triggerFull}>Make FullScreen !</button>
         </div>
       </div>
     </>
