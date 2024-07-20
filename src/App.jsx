@@ -52,7 +52,7 @@ const App = () => {
   const { y } = useScroll();
 
   // useFullscreen
-  const { element, triggerFull } = useFullscreen();
+  const { element, triggerFull, exitFull } = useFullscreen();
 
   return (
     <>
@@ -116,12 +116,14 @@ const App = () => {
         <hr />
         {/* useFullscreen */}
         <div>
-          <img
-            ref={element}
-            src="https://i.ibb.co/R6RwNxx/grape.jpg"
-            alt="grape"
-            width="250"
-          />
+          <div ref={element}>
+            <img
+              src="https://i.ibb.co/R6RwNxx/grape.jpg"
+              alt="grape"
+              width="250"
+            />
+            <button onClick={exitFull}>Exit FullScreen !</button>
+          </div>
           <button onClick={triggerFull}>Make FullScreen !</button>
         </div>
       </div>

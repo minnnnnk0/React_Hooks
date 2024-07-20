@@ -7,6 +7,9 @@ const useFullscreen = () => {
       element.current.requestFullscreen();
     }
   };
-  return { element, triggerFull };
+  const exitFull = () => {
+    document.exitFullscreen();
+  };
+  return { element, triggerFull, exitFull };
 };
 export default useFullscreen;
