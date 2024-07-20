@@ -1,6 +1,7 @@
 import useClick from './hooks/useClick';
 import useConfirm from './hooks/useConfirm';
 import useInput from './hooks/useInput';
+import usePreventLeave from './hooks/usePreventLeave';
 import useTab from './hooks/useTab';
 import useTitle from './hooks/useTitle';
 
@@ -24,6 +25,9 @@ const App = () => {
   const deleteWord = () => console.log('Deleting the word');
   const abort = () => console.log('Aborted');
   const confirmDelete = useConfirm('Are you sure?', deleteWord, abort);
+
+  // usePreventLeave
+  const { enablePrevent, disablePrevent } = usePreventLeave();
 
   return (
     <>
@@ -54,6 +58,13 @@ const App = () => {
         {/* useConfrim */}
         <div>
           <button onClick={confirmDelete}>Delete the word</button>
+        </div>
+
+        <hr />
+        {/* usePreventLeave */}
+        <div>
+          <button onClick={enablePrevent}>Protect</button>
+          <button onClick={disablePrevent}>Unprotect</button>
         </div>
       </div>
     </>
