@@ -1,3 +1,4 @@
+import useClick from './hooks/useClick';
 import useInput from './hooks/useInput';
 import useTab from './hooks/useTab';
 import useTitle from './hooks/useTitle';
@@ -13,6 +14,10 @@ const App = () => {
   // useTitle
   const titleUpdate = useTitle('Loading...');
   setTimeout(() => titleUpdate('Home'), 3000);
+
+  // useClick
+  const sayHello = () => console.log('say Hello');
+  const title = useClick(sayHello);
 
   return (
     <>
@@ -34,8 +39,10 @@ const App = () => {
         </div>
 
         <hr />
-        {/*  */}
-        <div></div>
+        {/* useClick */}
+        <div>
+          <h1 ref={title}>Hi</h1>
+        </div>
       </div>
     </>
   );
