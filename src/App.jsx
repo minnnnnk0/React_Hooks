@@ -5,6 +5,7 @@ import useFadeIn from './hooks/useFadeIn';
 import useInput from './hooks/useInput';
 import useNetwork from './hooks/useNetwork';
 import usePreventLeave from './hooks/usePreventLeave';
+import useScroll from './hooks/useScroll';
 import useTab from './hooks/useTab';
 import useTitle from './hooks/useTitle';
 
@@ -46,9 +47,12 @@ const App = () => {
   };
   const onLine = useNetwork(handleNetworkChange);
 
+  // useScroll
+  const { y } = useScroll();
+
   return (
     <>
-      <div>
+      <div style={{ height: '1000vh' }}>
         {/* useInput */}
         <div>
           <input placeholder="입력해주세요" {...inputValue} />
@@ -95,6 +99,14 @@ const App = () => {
         {/* useNetwork */}
         <div>
           <h1>{onLine ? 'Online' : 'Offline'}</h1>
+        </div>
+
+        <hr />
+        {/* useScroll */}
+        <div>
+          <h1 style={{ position: 'fixed', color: y > 100 ? 'red' : 'blue' }}>
+            Scroll TEST
+          </h1>
         </div>
       </div>
     </>
