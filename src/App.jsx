@@ -52,7 +52,10 @@ const App = () => {
   const { y } = useScroll();
 
   // useFullscreen
-  const { element, triggerFull, exitFull } = useFullscreen();
+  const onFullSc = (isFull) => {
+    console.log(isFull ? 'We are Full' : 'Not Full now');
+  };
+  const { element, triggerFull, exitFull } = useFullscreen(onFullSc);
 
   return (
     <>
