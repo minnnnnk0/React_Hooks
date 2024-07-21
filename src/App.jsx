@@ -65,12 +65,12 @@ const App = () => {
   });
 
   // useAxios
-  const { loading, data, error } = useAxios({
+  const { loading, data, error, refetch } = useAxios({
     url: 'https://yts.mx/api/v2/list_movies.json',
   });
-  console.log(
-    `Loadinf: ${loading}\nData: ${JSON.stringify(data)}\n Error: ${error}`
-  );
+  // console.log(
+  //   `Loadinf: ${loading}\nData: ${JSON.stringify(data)}\n Error: ${error}`
+  // );
 
   return (
     <>
@@ -149,6 +149,15 @@ const App = () => {
         {/* useNotification */}
         <div>
           <button onClick={triggerNotify}>Notofication !</button>
+        </div>
+
+        <hr />
+        {/* useAxios */}
+        <div>
+          <h1>Axios TEST</h1>
+          <h2>{data && data.status}</h2>
+          <h2>{loading && 'Loading...'}</h2>
+          <button onClick={refetch}>REFETCH NOW</button>
         </div>
       </div>
     </>
