@@ -4,6 +4,7 @@ import useConfirm from './hooks/useConfirm';
 import useFadeIn from './hooks/useFadeIn';
 import useInput from './hooks/useInput';
 import useNetwork from './hooks/useNetwork';
+import useNotification from './hooks/useNotification';
 import usePreventLeave from './hooks/usePreventLeave';
 import useScroll from './hooks/useScroll';
 import useTab from './hooks/useTab';
@@ -56,6 +57,11 @@ const App = () => {
     console.log(isFull ? 'We are Full' : 'Not Full now');
   };
   const { element, triggerFull, exitFull } = useFullscreen(onFullSc);
+
+  // useNotification
+  const triggerNotify = useNotification('Hi Im Notification :)', {
+    body: 'This is body test haha',
+  });
 
   return (
     <>
@@ -128,6 +134,12 @@ const App = () => {
             <button onClick={exitFull}>Exit FullScreen !</button>
           </div>
           <button onClick={triggerFull}>Make FullScreen !</button>
+        </div>
+
+        <hr />
+        {/* useNotification */}
+        <div>
+          <button onClick={triggerNotify}>Notofication !</button>
         </div>
       </div>
     </>
