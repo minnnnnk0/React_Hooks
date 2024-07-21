@@ -7,9 +7,20 @@ const useAxios = (options, axiosInstance = defaultAxios) => {
     data: null,
     error: null,
   });
+
+  const [trigger, setTrigger] = useState(0);
+
   if (!options.url) {
     return;
   }
+  const refetch = () => {
+    setState({
+      ...state,
+      loading: true,
+    });
+    setTrigger(Date.now());
+  };
+
   useEffect(() => {
     axiosInstance(options)
       .then((data) => {
@@ -22,7 +33,7 @@ const useAxios = (options, axiosInstance = defaultAxios) => {
       .catch((error) => {
         setState({ ...state, loading: false, error });
       });
-  }, []);
-  return state;
+  }, [trigger]);
+  return { ...state, refetch };
 };
 export default useAxios;
