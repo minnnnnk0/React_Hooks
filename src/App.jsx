@@ -1,3 +1,4 @@
+import useAxios from './hooks/useAxios';
 import useBeforeLeave from './hooks/useBeforeLeave';
 import useClick from './hooks/useClick';
 import useConfirm from './hooks/useConfirm';
@@ -62,6 +63,14 @@ const App = () => {
   const triggerNotify = useNotification('Hi Im Notification :)', {
     body: 'This is body test haha',
   });
+
+  // useAxios
+  const { loading, data, error } = useAxios({
+    url: 'https://yts.mx/api/v2/list_movies.json',
+  });
+  console.log(
+    `Loadinf: ${loading}\nData: ${JSON.stringify(data)}\n Error: ${error}`
+  );
 
   return (
     <>
